@@ -36,7 +36,7 @@ stack_t stack_create(void) {
         return NULL;
     } else {
         new_stack->top = NULL;
-        new_stack->back = NULL;
+        new_stack->bottom = NULL;
         new_stack->length = 0;
 
         return new_stack;
@@ -85,13 +85,13 @@ int stack_pop(stack_t stack, void **data) {
         return -1;
     }
 
-    // Store node temporarily and set next node as front node
-    node_t old_node = stack->front;
+    // Store node temporarily and set next node as top node
+    node_t old_node = stack->top;
     stack->top = stack->top->next;
 
     // If there are no more nodes in the stack, make the stack empty
-    if (stack->front == NULL) {
-        stack->back = NULL;
+    if (stack->top == NULL) {
+        stack->bottom = NULL;
     }
 
     // Update the size of the stack
@@ -122,8 +122,8 @@ int stack_delete(stack_t stack, void *data) {
         // Update stack size
         stack->length--;
         // If the stack is empty
-        if (stack->front == NULL) {
-            stack->back = NULL;
+        if (stack->top == NULL) {
+            stack->bottom = NULL;
         }
         return 0;
     } else {
@@ -150,7 +150,7 @@ int stack_delete(stack_t stack, void *data) {
             stack->bottom = previousNode;
         }
     }
-    
+
     return 0;
 }
 
@@ -171,6 +171,8 @@ int stack_iterate(stack_t stack, stack_func_t func) {
         (*func)(queue, currentNode->data); 
         currentNode = nextNode;      
     }
+
+    return 0;
 }
 
 int stack_size(stack_t stack) {
