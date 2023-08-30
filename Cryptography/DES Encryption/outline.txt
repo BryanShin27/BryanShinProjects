@@ -1,0 +1,20 @@
+Inputs:
+- a block of 64 bits, unencrypted
+- a master key of 56 bits (actually 64 bits but 8 bits get removed)
+    - this master key is used to create round keys of 48 bits each
+
+Outputs:
+- a block of 64 bits, encrpyted
+
+Steps of the DES encryption algorithm:
+- (generating the key)
+- initial permutation
+- 16 rounds of encryption
+- final permutation
+
+Things I need to create:
+- master key generator (must be cryptographically safe; this can be added later, use dummy keys for now)
+- round key generator
+- initial permutation
+- final permutation (undoes the initial permutation)
+- Feistel network

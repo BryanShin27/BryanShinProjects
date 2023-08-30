@@ -1,0 +1,10 @@
+v0.1
+- created des.c
+- created .c and .h files named f_function, initial_permutation, final_permutation
+- This is a straightforward, naive implementation of the data flow of DES described in "Understanding cryptography" by Paar and Pelzl.
+- This version of the project can encrypt a plaintext, but cannot decrypt any ciphertext.
+- This version of the project encrypts one single block of plaintext not exceeding 64 bits in length.
+- Future versions of the project will include decryption capabilities, as well as the ability to encrypt plaintexts longer than 64-bits.
+
+v1.0
+- 
